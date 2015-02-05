@@ -77,8 +77,24 @@ $(function(){
 
 	$("#phone").on("keyup", function(event){
 		
-		var len = $("#phone").val().length;
-		if(event.which < 48 || event.which > 57){
+		var len = 0;
+
+		if(phoneCnt === 0){
+			$.each($("#phone").val().split(""), function(index, curVal){
+
+				if(!isNaN(curVal)){
+					len ++;
+				}
+			});
+		}
+		
+		if(event.which !== 8 
+			&& event.which !== 9
+			&& event.which !== 17
+			&& event.which !== 37 
+			&& event.which !== 39
+			&& ((event.which < 48 || event.which > 57) 
+				&& (event.which < 96 || event.which > 105))) {
 			
 			isPhone = false;
 		}
