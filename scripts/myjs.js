@@ -92,47 +92,40 @@ $(function(){
 			&& event.which !== 9
 			&& event.which !== 17
 			&& event.which !== 37 
+			&& event.which !== 38 
 			&& event.which !== 39
+			&& event.which !== 40 
 			&& ((event.which < 48 || event.which > 57) 
 				&& (event.which < 96 || event.which > 105))) {
 			
 			isPhone = false;
+			$("#phone").addClass("invalid");
+			$("#phone").removeClass("valid");
 		}
 
 		if(len === 10){
 
-			if(!isPhone){
-
-				$("#phone").addClass("invalid");
-				$("#phone").removeClass("valid");
-			}else{
-
-				$("#phone").removeClass("invalid");
-				$("#phone").addClass("valid");
-				
-
-				$("#phone").val(formatPhone($("#phone").val().split("")));
-				phoneCnt = 1;
-			}
-
+			$("#phone").removeClass("invalid");
+			$("#phone").addClass("valid");
+			$("#phone").val(formatPhone($("#phone").val().split("")));
+			phoneCnt = 1;
 			isPhone = true;
-		}else{
+		}
 
-			if(phoneCnt === 1){
+		if(phoneCnt === 1 && $("#phone").val().length === 12 && event.which === 8){
 
-				var newPhone = [];
+			var newPhone = [];
 
-				$.each($("#phone").val().split(""), function(index, curVal){
+			$.each($("#phone").val().split(""), function(index, curVal){
 
-					if(curVal !== '(' && curVal !== ')' && curVal !== '-'){
+				if(curVal !== '(' && curVal !== ')' && curVal !== '-'){
 
-						newPhone.push(curVal);
-					}
-				});
+					newPhone.push(curVal);
+				}
+			});
 
-				$("#phone").val(formatPhone($("#phone").val().split("")));
-				phoneCnt = 0;
-			}
+			$("#phone").val(newPhone.join(""));
+			phoneCnt = 0;
 		}
 	});
 });
