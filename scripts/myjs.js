@@ -8,36 +8,62 @@ $(function(){
 		if($("#name").val().length === 0){
 			
 			$("#name").addClass("invalid");
+			$("#errorName").text("Required!");
+			$("#errorName").removeClass("hidden");
+			$("#errorName").addClass("show");
 		}else{
 
 			$("#name").removeClass("invalid");
+			$("#errorName").text("");
+			$("#errorName").removeClass("show");
+			$("#errorName").addClass("hidden");
 		}
 
 		if($("#addr").val().length === 0){			
 			
 			$("#addr").addClass("invalid");
+			$("#errorAddr").text("Required!");
+			$("#errorAddr").removeClass("hidden");
+			$("#errorAddr").addClass("show");
 		}
 		else{
 
 			$("#addr").removeClass("invalid");
+			$("#errorAddr").text("");
+			$("#errorAddr").removeClass("show");
+			$("#errorAddr").addClass("hidden");
 		}
 
 		if($("#email").val().length === 0 || $("#email").val().indexOf("@") === -1){
 
 			$("#email").addClass("invalid");
+			$("#email").val().length === 0 	? $("#errorEmail").text("Required!") 
+											: $("#errorEmail").text("Wrong Format!");
+			$("#errorEmail").removeClass("hidden");
+			$("#errorEmail").addClass("show");
 		}
 		else{
 
 			$("#email").removeClass("invalid");
+			$("#errorEmail").text("");
+			$("#errorEmail").removeClass("show");
+			$("#errorEmail").addClass("hidden");
 		}
 
-		if($("#phone").val().length === 0){
+		if($("#phone").val().length === 0 || $("#phone").hasClass("invalid")){
 
 			$("#phone").addClass("invalid");
+			$("#phone").val().length === 0 	? $("#errorPhone").text("Required!") 
+											: $("#errorPhone").text("Wrong Number!");
+			$("#errorPhone").removeClass("hidden");
+			$("#errorPhone").addClass("show");
 		}
 		else{
 
 			$("#phone").removeClass("invalid");
+			$("#errorPhone").text("");
+			$("#errorPhone").removeClass("show");
+			$("#errorPhone").addClass("hidden");
 		}
 
 		if($(".invalid").length === 0 ){
