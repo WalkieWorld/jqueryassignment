@@ -50,11 +50,15 @@ $(function(){
 			$("#errorEmail").addClass("hidden");
 		}
 
-		if($("#phone").val().length === 0 || $("#phone").hasClass("invalid")){
+		if($("#phone").val().length !== 13 || $("#phone").hasClass("invalid")){
 
 			$("#phone").addClass("invalid");
 			$("#phone").val().length === 0 	? $("#errorPhone").text("Required!") 
 											: $("#errorPhone").text("Wrong Number!");
+			// if($("#phone").val().length !== 13 && $("#phone").val().length !== 0)
+			// {
+			// 	$("#errorPhone").text("Please finish the right phone number!");
+			// } 
 			$("#errorPhone").removeClass("hidden");
 			$("#errorPhone").addClass("show");
 		}
@@ -66,7 +70,7 @@ $(function(){
 			$("#errorPhone").addClass("hidden");
 		}
 
-		if($(".invalid").length === 0 ){
+		if($("input.invalid").length === 0 ){
 			
 			alert("Valid Input");
 		}else{
@@ -111,6 +115,15 @@ $(function(){
 				if(!isNaN(curVal)){
 					len ++;
 				}
+
+				if(len !== $("#phone").val().split("").length){
+					$("#phone").addClass("invalid");
+					$("#phone").removeClass("valid");
+				}
+				else{
+					$("#phone").removeClass("invalid");
+					$("#phone").addClass("valid");
+				}
 			});
 		}
 		
@@ -151,6 +164,7 @@ $(function(){
 			});
 
 			$("#phone").val(newPhone.join(""));
+			len = $("#phone").val().length;
 			phoneCnt = 0;
 		}
 	});
