@@ -48,7 +48,11 @@
 			//		b) Append userElement to the document
 			//		c) That's all this function does :)
 
+			var inspectUser = function(user){
 
+				var userElement = inspectObject(user);
+				$("body").append(userElement);
+			}
 
 			// 4) Create another function called inspectArray with one parameter that
 			//    will be an array.
@@ -76,7 +80,31 @@
 		 	// 		e) Lastly, return the ul element. We don't want to append it, because
 			//    	   inspectUser will append everything when we're all done here.
 			
+			var inspectArray = function(array){
+				var ul = $("<ul></ul>");
 
+				for(var i = 0; i , array.length; i++){
+					
+					var li = $("<li></li>");
+					
+					if(array[i] instanceof Array){
+
+						var arrayElement = inspectArray(array[i]);
+						li.append(arrayElement);
+					}
+					else if(array[i] instanceof Object){
+
+						var objectElement = inspectObject(array[i]);
+						li.append(objectElement);
+					}else{
+
+						li.textContent = array[i];
+					}
+
+					ul.append(li);
+				}
+				return ul;
+			}
 
 			// 4) Create another function called inspectObject with one parameter that
 			//    will be an object.
@@ -109,7 +137,10 @@
 		 	// 		e) Lastly, return the ul element. We don't want to append it, because
 			//    	   inspectUser will append everything when we're all done here.
 
+			var inspectObject = function(object){
 
+				$("")
+			}
 
 
 
