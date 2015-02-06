@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+		<script>
+			// JavaScript Practice Worksheet
+
+			// For this assignment, follow the instructions to learn more
+			// about objects, loops, and functions. At the bottom, I have written
+			// a lot of text to help you through this assignment.
+
+
+			// 1) Create a new object and assign it to a variable named user.
+
+			var user = {};
+
+			// 2) Now, add the following properties to our user object, and fill in the values
+			// with your information. If you do not have favorite foods, siblings, or degrees,
+			// then just put an empty array as the value.
+
+				// name of type string
+				// age of type number
+				// height of type number in inches
+				// eyeColor of type string
+				// hairColor of type string
+				// favoriteFoods, an array of strings of foods
+				// favoriteColors, an array of strings of colors
+				// siblings, an array of objects, each with name and age properties
+				// degrees, an array of objects, each with school, degreeName, and gpa properties
+				// hobbies, an array of strings
+
+			user.name = "Smile";
+			user.age = 30;
+			user.height = 5.7;
+			user.eyeColor = "blue";
+			user.hairColor = "black";
+			user.favoriteFoods = ["Apple", "Watermelon"];
+			user.favoriteColors = ["blue", "white"];
+			user.siblings = [{name: "Jack", age: 18}, {name: "Emily", age: 20}];
+			user.degrees = [{school: "DU", degreeName: "Computer Science", gpa: "A"},
+							{school: "WU", degreeName: "Software Egineering", gpa: "A"}];
+			user.hobbies = ["basketball", "football", "baseball"];
+
+
+			// 3) Now, create a function called inspectUser that has one argument, a user object.
+			//		a) pass in the user to our inspectObject function. Save the result to
+			//		   variable called userElement
+			//		b) Append userElement to the document
+			//		c) That's all this function does :)
+
+
+
+			// 4) Create another function called inspectArray with one parameter that
+			//    will be an array.
+			//		a) Create a <ul> and save it to a variable called ul.
+			//		b) Give this ul a class name of "array"
+			//		c) Create a for loop and loop over every item in the array
+			//		 	1) Create an <li> item, and save it to a variable called li.
+			//			2) Write an if statement. If the array at the current index is
+			//    		   an instanceof Array, then do the following.
+			//  				a) pass the array item at the current index into inspectArray
+			//  		   		   and save what the function returns to a variable named
+			//  		   		   arrayElement.
+			//  				b) append arrayElement to your li.
+		 	// 			3) Write an else if state. If the array at the current index is
+		 	// 	   		   an instanceof Object, then do the following.
+		 	// 	   	    		a) pass the array item at the current index into inspectObject
+		 	// 	   	       		   and save what the function returns to a variable named
+		 	// 	   	       		   objectElement.
+		 	// 	   	    		b) append objectElement to your li.
+		 	// 			4) Write an else statement. We know that the array item is not an
+		 	// 	   		   array or an object, so it must be a plain old number or string.
+		 	// 	   		   Set the textContent of our li to the value of the array at the
+		 	// 	   		   current index.
+		 	// 			5) Append the li to our ul
+		 	// 		e) Lastly, return the ul element. We don't want to append it, because
+			//    	   inspectUser will append everything when we're all done here.
+			
+
+
+			// 4) Create another function called inspectObject with one parameter that
+			//    will be an object.
+			//		a) Create a <ul> and save it to a variable called ul.
+			//		b) Give this ul a class name of "object"
+			//		c) Create a for in loop and loop over each property in the object
+			//		 	1) Create an <li> item, and save it to a variable called li.
+			//  		2) Create a <span> tag, and save it to a variable called propertyNameSpan.
+			//  		3) Create a <span> tag, and save it to a variable called valueSpan.
+			//  		4) Append the propertyNameSpan to our li.
+			//  		5) Append the valueNameSpan to our li.
+			//  		6) Now lets set the textContent of our propertyNameSpan to the current property name.
+			//			
+			//			7) Write an if statement. If the value at the current property on our object is
+			//			    an instanceof Array, then do the following.
+			//  				a) pass the array item at the current index into inspectArray
+			//  		   		   and save what the function returns to a variable named
+			//  		   		   arrayElement.
+			//  				b) append arrayElement to your li.
+			// 			8) Write an else if state. If the value at the current property on our object is
+			// 	   		   an instanceof Object, then do the following.
+		 	// 	   	    		a) pass the array item at the current index into inspectObject
+		 	// 	   	       		   and save what the function returns to a variable named
+		 	// 	   	       		   objectElement.
+		 	// 	   	    		b) append objectElement to your li.
+		 	// 			4) Write an else statement. We know that the value is not an
+		 	// 	   		   array or an object, so it must be a plain old number or string.
+		 	// 	   		   Set the textContent of our li to the value of the current property on our object.
+		 	// 			5) Append the li to our ul
+		 	// 		e) Lastly, return the ul element. We don't want to append it, because
+			//    	   inspectUser will append everything when we're all done here.
+
+
+
+
+
+			// Great! Now, try and running inspectUser and pass in your user object. Like this.
+			// inspectUser(user);
+			// it should print everytihng to the document
+
+		</script>
+	</body>
+</html>
+
+<!-- 
+
+Learning about instanceof
+=========================
+
+Remember how I said that everything has a type? Whether it be boolean, string,
+number, Object, null, or undefined? Well, javascript has a way to identify
+what kind of specific object you're looking at. For this exercise, we will need
+to perform instanceof checks, to make sure that an argument is either an Object
+or an Array.
+
+But wait a second, I thought you said Arrays ARE Objects. And you would be correct.
+Arrays are a sub class of Object, that means they have inherited all of Objects
+properties. Let's look below at how to do instanceof checks.
+
+var myArray = [];
+myArray instanceof Array // true
+myArray instanceof Object // true
+
+var myObject = {};
+myObject instanceof Array // false
+myObject instanceof Object // true
+
+From the above code, we can tell that arrays are both an instance of Array AND an
+instance of Object. That's because Array is inherited from Object. Let's take a
+real world example to better understand this.
+
+In the animal world, we have all kinds of mammals, reptiles, insects, birds, and
+other species. In a more specific case, let's imagine a monkey. Now, imagine a
+monkey was a cool javascript class, and let's run the following checks.
+
+var myMonkey = new Monkey
+myMonkey instanceof Monkey // true
+myMonkey instanceof Mammal // true
+myMonkey instanceof Animal // true
+myMonkey instanceof Organism // true
+
+From this example, we can see how a monkey actually fits into several different
+categories. And monkeys inherit characteristics from each step up the chain. It
+has the properties of a mammal, an animal, and an organism, and more specifically
+a monkey. Now let's look at this situation.
+
+var animal = new Animal
+animal instanceof Monkey // false
+animal instanceof Animal // true
+animal instanceof Organism // true
+
+Animal is higher up than monkey, so this makes sense.
+
+Well the same applies to arrays and objects. At the very highest level, we have
+Objects. Everything extends (or descends) from an Object. The same way a monkey
+can be considered both a monkey AND a mammal, arrays are both an Array AND an Object.
+
+When we create arrays, they are both an Array AND an Object, but an Object is NOT an
+Array, it is just an Object.
+
+An Object or an Array are known as a Class in computer science. You can create
+many instances of a single Class. For example, cars have blueprints that define how
+to build a car. A Class is like that blueprint. When we build a new car, we have
+created a new instance of a car blueprint. When we create a new array, we are creating
+a new instance of the Array class. That is the entire purpose of the "new" keyword
+in javascript. It creates a new instance of a class.
+
+Up until now, we have been using mostly literal notation, like below.
+
+var myString = "hello!";
+var myArray = [1,2,3];
+var myObj = {}
+
+But, you can also do the same thing with the code below.
+
+var myString = new String;
+var myArray = new Array;
+var myObj = new Object;
+
+That's because everytime we create something, we are creating instances of a Class.
+
+Pretty neat!
+
+Now how do I use instanceof checks?
+
+In the following code, we're going to validate an argument of a function.
+
+
+function validateArray(someArray){
+	if(someArray instanceof Array){
+		console.log("This is a real array");
+	} else {
+		console.log("Imposter! This is not a real array!");
+	}
+}
+
+function validateObject(someObject){
+	if(someObject instanceof Object){
+		console.log("This is a real object");
+	} else {
+		console.log("Imposter! This is not a real object!");
+	}
+}
+
+Now for the code we are trying to create above, we are trying to make generic functions
+that can handle anything that comes its way. That's why we need to check if we're
+dealing with an Object, Array, or some other type.
+
+Good luck! 
+
+-->
+
+
+
+
+
+<!-- 
+
+Learning about for loops 
+========================
+
+For loops are used to iterate over items in an array, or properties in an object.
+The former is a traditional for loop while the latter is a special loop known as a
+for in loop. Below are examples of how to use both.
+
+
+var myArray = ['banana', 'apple', 'kiwi'];
+
+
+	    initialize         the condition			 this last statement is what
+	    i to 0			think "for as long as..."    happens at the end of each cycle.
+	                              					 It increments i by 1.
+        
+for(	var i = 0; 		i < myArray.length; 		i++){
+	console.log(myArray[i]);
+}
+
+This will log, "banana apple kiwi" to the log.
+
+Things to remember:
+	- .length tells us how many things are in the array, in this case, 3
+	- Arrays are 0 based, so myArray[0] (read as, myArray at index 0)
+	  would be banana, myArray[1] is apple, and myArray[2] is kiwi.
+
+
+
+Cool, thats about all there is to traditional loops. Now the for in loop. Check out the
+sample below.
+
+var myObject = {
+	name: "Seth!",
+	age: 26
+}
+
+
+	initialize a,					This is our object
+	which will be 					that we will access
+	assigned different   			inside the loop
+	property names
+	at each cycle.
+
+for(	var a 			in 			myObject){
+	console.log(myObject[a]);
+}
+
+
+When we look at this loop, the variable a is taking the name of each property in the object.
+So, in the first pass, a = "name". Then, we can access the value of the property by using
+bracket notation on the object. That looks like this. myObject["name"]. That statement gives
+us the value stored in the object, which would be "Seth". The a variable will change to each
+property name as the loop cycles. That's how we're able to access all the values of the object
+using a for in loop.
+
+Good luck!
+
+
+-->
+
+
+
+<!-- 
+
+Using jQuery 
+============
+
+For this exercise, you should use jQuery.
+
+As a quick reminder, here is how you achieve things in jQuery, as well as their
+normal javascript equivalents.
+
+
+Create HTML
+***********
+
+Normal - 	document.createElement('div'); // <div></div>
+jQuery -    $('<div></div>') // <div></div>
+
+It's important to note that you can put anything into the jQuery one and it will
+create it in html. In normal JavaScript, we can only create one element at a time.
+jQuery will make it much simpler to create html on the fly for you.
+
+
+
+Appending
+*********
+
+normal - document.body.appendChild(div);
+jQuery - $(document.body).append(div);
+
+Keep in mind, div in this case is something that I created using document.createElement('div');
+or $('<div></div>');
+
+
+That should be all the jQuery that you need for this exercise.
+
+Good luck!
+
+-->
+
+
