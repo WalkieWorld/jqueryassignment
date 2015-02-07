@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-	<head></head>
+	<head>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+	</head>
 	<body>
 		<script>
 			// JavaScript Practice Worksheet
@@ -9,7 +11,7 @@
 			// about objects, loops, and functions. At the bottom, I have written
 			// a lot of text to help you through this assignment.
 
-
+			$(function(){
 			// 1) Create a new object and assign it to a variable named user.
 
 			var user = {};
@@ -48,6 +50,7 @@
 			//		b) Append userElement to the document
 			//		c) That's all this function does :)
 
+
 			var inspectUser = function(user){
 
 				var userElement = inspectObject(user);
@@ -81,9 +84,12 @@
 			//    	   inspectUser will append everything when we're all done here.
 			
 			var inspectArray = function(array){
+
 				var ul = $("<ul></ul>");
 
-				for(var i = 0; i , array.length; i++){
+				ul.array = array;
+
+				for(var i = 0; i < ul.array.length; i++){
 					
 					var li = $("<li></li>");
 					
@@ -98,7 +104,7 @@
 						li.append(objectElement);
 					}else{
 
-						li.textContent = array[i];
+						li.text(array[i]);
 					}
 
 					ul.append(li);
@@ -139,15 +145,49 @@
 
 			var inspectObject = function(object){
 
-				$("")
+				var ul = $("<ul></ul>");
+
+				ul.object = object;
+
+				for(var i in ul.object){
+
+					var li = $("<li></li>");
+					var propertyNameSpan = $("<span></span>");
+					var valueNameSpan = $("<span></span>");
+
+					// Why propertyNameSpan.textContent = i.toString(); doesn't work!!!
+					// propertyNameSpan.textContent = i.toString();
+					propertyNameSpan.text(i.toString() + ": ");
+					li.append(propertyNameSpan);
+					li.append(valueNameSpan);
+					
+					
+
+					if(ul.object[i] instanceof Array){
+
+						var arrayElement = inspectArray(ul.object[i]);
+
+						li.append(arrayElement);
+					}else if(ul.object[i] instanceof Object){
+
+						var objectElement = inspectObject(ul.object[i]);
+						li.append(objectElement);
+					}else{
+
+						li.append(ul.object[i]);
+					}
+
+					ul.append(li);
+				}
+
+				return ul;
 			}
-
-
-
 			// Great! Now, try and running inspectUser and pass in your user object. Like this.
 			// inspectUser(user);
 			// it should print everytihng to the document
 
+			inspectUser(user);
+			});
 		</script>
 	</body>
 </html>
@@ -236,7 +276,8 @@ Now how do I use instanceof checks?
 In the following code, we're going to validate an argument of a function.
 
 
-function validateArray(someArray){
+function validateArray(someArray){tance of the Array class. That is the entire purpose of the "new" keyword
+in javascript. It creates a new instance of a class.
 	if(someArray instanceof Array){
 		console.log("This is a real array");
 	} else {
